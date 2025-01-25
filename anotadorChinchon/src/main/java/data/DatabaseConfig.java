@@ -9,8 +9,20 @@ public class DatabaseConfig {
     private static final String USER = "root";
     private static final String PASSWORD = "localhost";
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    // Método para obtener una conexión
+    public static Connection getConnection() {
+        Connection connection = null;
+
+        try {
+            // Establecer la conexión
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Conexión exitosa a la base de datos.");
+        } catch (SQLException e) {
+            // Mostrar el error si algo sale mal
+            System.err.println("Error al conectar con la base de datos: " + e.getMessage());
+        }
+
+        return connection;
     }
 
 }
