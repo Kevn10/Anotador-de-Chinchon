@@ -69,4 +69,8 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
+
+    public void EliminarUser(int id){
+        
+    }
 }
