@@ -71,6 +71,14 @@ public class UserRepository {
     }
 
     public void EliminarUser(int id){
-        
+        String sql = "DELETE FROM Users WHERE id = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection();
+        PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
