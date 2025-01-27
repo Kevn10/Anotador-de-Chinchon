@@ -55,15 +55,14 @@ public class UserRepository {
 
     public void ActualizarUser(int id ,String mail, String username, String password, Date modifiedDate) {
         // Mail, NombreUsuario, FechaModificación, Contraseña
-        String sql = "UPDATE Users SET (usu_mail, usu_username, usu_password, usu_modifiedDate) = ? WHERE usu_id = ?";
+        String sql = "UPDATE Users SET usu_mail = ?, usu_username = ?, usu_password = ?, usu_modifiedDate = ? WHERE usu_id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
         PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, mail);
             pst.setString(2, username);
             pst.setString(3, password);
-            pst.setDate(4, modifiedDate);
-            pst.setInt(5, id);
+            pst.setInt(4, id);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
