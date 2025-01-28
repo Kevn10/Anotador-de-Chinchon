@@ -55,7 +55,7 @@ public class UserRepository {
 
     public void ActualizarUser(int id ,String mail, String username, String password, Date modifiedDate) {
         // Mail, NombreUsuario, FechaModificación, Contraseña
-        String sql = "UPDATE Users SET usu_mail = ?, usu_username = ?, usu_password = ?, usu_modifiedDate = ? WHERE usu_id = ?";
+        String sql = "UPDATE Users SET usu_mail = ?, usu_username = ?, usu_password = ?, usu_modifiedDate = CURDATE() WHERE usu_id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
         PreparedStatement pst = conn.prepareStatement(sql)) {
